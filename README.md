@@ -45,11 +45,7 @@ BUILD SUCCESSFUL in 0s
 과제 시작 시간: 12:20
 TDD 종료: 13:56 (1시간 36분)
 MVP 완성: 14:56 (TDD + 1시간)
-리팩토링 완료: 
-
-TODO
-StocksRequest:20, 44에서 IndexOutOfBoundsException 예외처리해야함. 잘못된 입력 형식입니다.
-[사이다,1,10],[콜라,1,10] 입력하면 이상하게 돌아감 
+리팩토링 종료: 17:20 (총 5시간)
 
 ### ✍🏻 입출력 요구사항
 
