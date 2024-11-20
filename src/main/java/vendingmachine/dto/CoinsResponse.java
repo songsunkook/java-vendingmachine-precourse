@@ -1,7 +1,7 @@
 package vendingmachine.dto;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import vendingmachine.Coin;
@@ -12,7 +12,7 @@ public class CoinsResponse {
     private Map<Coin, Integer> coins;
 
     private CoinsResponse(Map<Coin, Integer> coins) {
-        this.coins = coins;
+        this.coins = new EnumMap<>(coins);
     }
 
     public static CoinsResponse from(Coins coins) {
@@ -20,7 +20,7 @@ public class CoinsResponse {
     }
 
     public Map<Coin, Integer> getCoinsWithZero() {
-        Map<Coin, Integer> result = new HashMap<>(coins);
+        Map<Coin, Integer> result = new EnumMap<>(coins);
         Arrays.stream(Coin.values())
             .forEach(coin -> result.put(coin, result.getOrDefault(coin, 0)));
         return result;
