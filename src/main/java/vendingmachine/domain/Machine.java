@@ -2,6 +2,7 @@ package vendingmachine.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Machine {
 
@@ -17,7 +18,7 @@ public class Machine {
         inputtedMoney += money;
     }
 
-    public void buy(int money) {
+    public void useCoin(int money) {
         coins.use(money);
     }
 
@@ -51,7 +52,7 @@ public class Machine {
 
     private Stock findStockByName(String name) {
         return stocks.stream()
-            .filter(stock -> stock.getName() == name)
+            .filter(stock -> Objects.equals(stock.getName(), name))
             .findAny()
             .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품"));
     }

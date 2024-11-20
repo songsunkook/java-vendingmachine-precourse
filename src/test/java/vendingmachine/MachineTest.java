@@ -23,7 +23,7 @@ class MachineTest {
         coins.add(Coin.COIN_10);
         Machine machine = new Machine();
         machine.setCoins(coins);
-        machine.buy(1110);
+        machine.useCoin(1110);
         assertThat(machine.getCoinCount()).isEqualTo(4);
     }
 
