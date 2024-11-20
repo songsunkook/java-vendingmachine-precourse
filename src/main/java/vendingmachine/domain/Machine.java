@@ -29,10 +29,10 @@ public class Machine {
     public void buy(String name, int count) {
         Stock target = findStockByName(name);
         if (inputtedMoney < target.getCost() * count) {
-            throw new IllegalArgumentException("넣은 금액보다 비싼 요청");
+            throw new IllegalArgumentException("[ERROR] 넣은 금액보다 비싼 요청");
         }
         if (target.getQuantity() < count) {
-            throw new IllegalArgumentException("재고보다 많은 개수 요청");
+            throw new IllegalArgumentException("[ERROR] 재고보다 많은 개수 요청");
         }
         target.useQuantity(count);
         inputtedMoney -= target.getCost() * count;
@@ -54,7 +54,7 @@ public class Machine {
         return stocks.stream()
             .filter(stock -> Objects.equals(stock.getName(), name))
             .findAny()
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품"));
+            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 상품"));
     }
 
     public boolean canMoreOrder() {

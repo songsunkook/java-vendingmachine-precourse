@@ -6,7 +6,11 @@ import vendingmachine.dto.StocksRequest;
 public class InputView {
 
     public static int machineMoney() {
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 입력");
+        }
     }
 
     public static StocksRequest stocks() {

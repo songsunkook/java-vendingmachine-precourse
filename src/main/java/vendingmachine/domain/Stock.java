@@ -8,7 +8,7 @@ public class Stock {
 
     public Stock(String name, int cost, int quantity) {
         if (cost % 10 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 10으로 나누어떨어지지 않음");
         }
         this.name = name;
         this.cost = cost;

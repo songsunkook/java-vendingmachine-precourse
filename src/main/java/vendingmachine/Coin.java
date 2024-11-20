@@ -26,7 +26,7 @@ public enum Coin {
         return Arrays.stream(values())
             .filter(coin -> coin.amount == amount)
             .findAny()
-            .orElseThrow(IllegalStateException::new);
+            .orElseThrow(() -> new IllegalStateException("[ERROR] 잘못된 동전 종류에 대한 요청"));
     }
 
     public int getAmount() {

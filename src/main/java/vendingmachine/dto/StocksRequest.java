@@ -20,7 +20,7 @@ public class StocksRequest {
                 .collect(Collectors.toList())
             );
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 입력");
         }
     }
 
