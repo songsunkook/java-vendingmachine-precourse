@@ -3,7 +3,7 @@ package vendingmachine.service;
 import java.util.stream.Collectors;
 
 import vendingmachine.domain.Machine;
-import vendingmachine.domain.Stock;
+import vendingmachine.domain.stock.Stock;
 import vendingmachine.dto.BuyStockRequest;
 import vendingmachine.dto.CoinsResponse;
 import vendingmachine.dto.MoneyRequest;

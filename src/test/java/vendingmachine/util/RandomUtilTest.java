@@ -4,7 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-import vendingmachine.domain.Coins;
+import vendingmachine.domain.coin.Coins;
 
 class RandomUtilTest {
 

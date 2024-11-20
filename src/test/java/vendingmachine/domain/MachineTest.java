@@ -4,6 +4,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
 
+import vendingmachine.domain.coin.Coin;
+import vendingmachine.domain.coin.Coins;
+import vendingmachine.domain.stock.Stock;
+
 class MachineTest {
 
     @Test

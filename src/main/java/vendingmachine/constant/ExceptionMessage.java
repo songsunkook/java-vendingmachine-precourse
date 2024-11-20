@@ -15,6 +15,7 @@ public enum ExceptionMessage {
 
     // IllegalStateException
     INVALID_COIN_TYPE_REQUEST("잘못된 동전 종류에 대한 요청입니다.", IllegalStateException.class),
+    INVALID_STOCKS_REQUEST("잘못된 재고 목록에 대한 요청입니다.", IllegalStateException.class),
     ;
 
     private static final String PREFIX = "[ERROR] ";

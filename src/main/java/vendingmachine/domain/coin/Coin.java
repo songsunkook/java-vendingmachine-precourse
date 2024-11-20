@@ -1,4 +1,4 @@
-package vendingmachine.domain;
+package vendingmachine.domain.coin;
 
 import static vendingmachine.constant.ExceptionMessage.INVALID_COIN_TYPE_REQUEST;
 

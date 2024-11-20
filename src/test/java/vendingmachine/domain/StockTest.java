@@ -4,6 +4,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
+import vendingmachine.domain.stock.Stock;
+
 class StockTest {
 
     @Test

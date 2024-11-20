@@ -1,6 +1,6 @@
 package vendingmachine.constant;
 
-import vendingmachine.domain.Coin;
+import vendingmachine.domain.coin.Coin;
 
 public class MachineConstant {
 

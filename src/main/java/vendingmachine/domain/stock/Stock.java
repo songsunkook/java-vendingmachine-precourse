@@ -1,4 +1,4 @@
-package vendingmachine.domain;
+package vendingmachine.domain.stock;
 
 import static vendingmachine.constant.ExceptionMessage.COST_MUST_BE_POSITIVE_NUMBER;
 import static vendingmachine.constant.ExceptionMessage.COST_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT;

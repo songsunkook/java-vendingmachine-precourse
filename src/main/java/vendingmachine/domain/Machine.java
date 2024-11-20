@@ -1,31 +1,31 @@
 package vendingmachine.domain;
 
-import static vendingmachine.constant.ExceptionMessage.NOT_FOUND_STOCK_NAME;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import vendingmachine.domain.coin.Coins;
+import vendingmachine.domain.stock.Stock;
+import vendingmachine.domain.stock.Stocks;
 
 public class Machine {
 
     private static final int BUY_QUANTITY_UNIT = 1;
 
     private final Coins coins = new Coins();
-    private final List<Stock> stocks = new ArrayList<>();
-    private int inputtedMoney = 0;
+    private final Stocks stocks = new Stocks();
+    private Money money = new Money();
 
     public void setCoins(Coins coins) {
         this.coins.addAll(coins);
     }
 
     public void inputMoney(int money) {
-        inputtedMoney += money;
+        this.money = this.money.add(money);
     }
 
     public void buy(String name) {
-        Stock target = findStockByName(name);
+        Stock target = stocks.findByName(name);
         target.useQuantity(BUY_QUANTITY_UNIT);
-        inputtedMoney -= target.getCost();
+        money = money.use(target.getCost());
     }
 
     public int getCoinCount() {
@@ -40,29 +40,16 @@ public class Machine {
         this.stocks.addAll(stocks);
     }
 
-    private Stock findStockByName(String name) {
-        return stocks.stream()
-            .filter(stock -> Objects.equals(stock.getName(), name))
-            .findAny()
-            .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_STOCK_NAME.getMessage()));
-    }
-
     public boolean canMoreOrder() {
-        return enoughMoney() && hasMoreStock();
+        return enoughMoney() && stocks.hasMore();
     }
 
     private boolean enoughMoney() {
-        return stocks.stream()
-            .anyMatch(stock -> stock.getCost() <= inputtedMoney);
-    }
-
-    private boolean hasMoreStock() {
-        return stocks.stream()
-            .anyMatch(Stock::hasMore);
+        return stocks.mostExpensiveCost()  <= money.get();
     }
 
     public Coins payback() {
-        return coins.payback(inputtedMoney);
+        return coins.payback(money.get());
     }
 
     public Coins getCoins() {
@@ -70,6 +57,6 @@ public class Machine {
     }
 
     public int getLeftMoney() {
-        return inputtedMoney;
+        return money.get();
     }
 }
