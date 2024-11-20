@@ -10,6 +10,9 @@ public class Stock {
         if (cost % 10 != 0) {
             throw new IllegalArgumentException("[ERROR] 10으로 나누어떨어지지 않음");
         }
+        if (cost < 0) {
+            throw new IllegalArgumentException("[ERROR] 가격은 양수여야 함");
+        }
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;

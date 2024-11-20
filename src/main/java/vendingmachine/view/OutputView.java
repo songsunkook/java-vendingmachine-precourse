@@ -43,4 +43,8 @@ public class OutputView {
                 set.getValue()
             )));
     }
+
+    public static void exception(Exception e) {
+        System.out.println(e.getMessage());
+    }
 }
