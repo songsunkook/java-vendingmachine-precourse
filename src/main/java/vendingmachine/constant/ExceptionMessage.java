@@ -12,6 +12,7 @@ public enum ExceptionMessage {
     MONEY_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT(String.format("금액이 %,d원으로 나누어떨어지지 않습니다.",
         MachineConstant.MINIMUM_COIN_AMOUNT), IllegalArgumentException.class),
     NOT_FOUND_STOCK_NAME("존재하지 않는 상품명입니다.", IllegalArgumentException.class),
+    INVALID_REQUEST_FORMAT("잘못된 입력 형식입니다.", IllegalArgumentException.class),
 
     // IllegalStateException
     INVALID_COIN_TYPE_REQUEST("잘못된 동전 종류에 대한 요청입니다.", IllegalStateException.class),

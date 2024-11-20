@@ -1,7 +1,6 @@
 package vendingmachine.dto;
 
-import static vendingmachine.constant.ExceptionMessage.COST_MUST_BE_NUMBER;
-import static vendingmachine.constant.ExceptionMessage.QUANTITY_MUST_BE_NUMBER;
+import static vendingmachine.constant.ExceptionMessage.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,13 +41,16 @@ public class StocksRequest {
         }
 
         public static InnerStock from(String content) {
-            String[] split = removePrefixPostfix(content).split(DELIMITER);
-
-            return new InnerStock(
-                split[0],
-                parseCost(split[1]),
-                parseQuantity(split[2])
-            );
+            try {
+                String[] split = removePrefixPostfix(content).split(DELIMITER);
+                return new InnerStock(
+                    split[0],
+                    parseCost(split[1]),
+                    parseQuantity(split[2])
+                );
+            } catch (IndexOutOfBoundsException e) {
+                throw new IllegalArgumentException(INVALID_REQUEST_FORMAT.getMessage());
+            }
         }
 
         private static String removePrefixPostfix(String content) {
