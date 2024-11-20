@@ -26,7 +26,7 @@ public class StocksRequest {
 
     public static class InnerStock {
 
-        private static final String DELIMITER = ",";
+        private static final String INNER_DELIMITER = ",";
         private static final String PREFIX = "[";
         private static final String POSTFIX = "]";
 
@@ -42,7 +42,7 @@ public class StocksRequest {
 
         public static InnerStock from(String content) {
             try {
-                String[] split = removePrefixPostfix(content).split(DELIMITER);
+                String[] split = removePrefixPostfix(content).split(INNER_DELIMITER);
                 return new InnerStock(
                     split[0],
                     parseCost(split[1]),
