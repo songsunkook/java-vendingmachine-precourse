@@ -15,16 +15,28 @@ class MachineTest {
         Coins coins = new Coins();
         coins.add(Coin.COIN_500);
         coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_100);
+        coins.add(Coin.COIN_100);
+        coins.add(Coin.COIN_100);
         coins.add(Coin.COIN_100);
         coins.add(Coin.COIN_100);
         coins.add(Coin.COIN_50);
         coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_10);
+        coins.add(Coin.COIN_10);
+        coins.add(Coin.COIN_10);
         coins.add(Coin.COIN_10);
         coins.add(Coin.COIN_10);
         Machine machine = new Machine();
         machine.setCoins(coins);
-        machine.useCoin(1110);
-        assertThat(machine.getCoinCount()).isEqualTo(4);
+        machine.inputMoney(760);
+        assertThat(machine.payback().getCount()).isEqualTo(5);
     }
 
     @Test

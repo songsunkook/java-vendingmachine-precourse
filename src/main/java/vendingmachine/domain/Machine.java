@@ -18,10 +18,6 @@ public class Machine {
         inputtedMoney += money;
     }
 
-    public void useCoin(int money) {
-        coins.use(money);
-    }
-
     public void buy(String name) {
         buy(name, 1);
     }
