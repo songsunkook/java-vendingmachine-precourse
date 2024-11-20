@@ -4,7 +4,9 @@ import java.util.stream.Collectors;
 
 import vendingmachine.domain.Machine;
 import vendingmachine.domain.Stock;
+import vendingmachine.dto.BuyStockRequest;
 import vendingmachine.dto.CoinsResponse;
+import vendingmachine.dto.MoneyRequest;
 import vendingmachine.dto.StocksRequest;
 import vendingmachine.util.RandomUtil;
 
@@ -12,8 +14,8 @@ public class MachineService {
 
     private final Machine machine = new Machine();
 
-    public void setMachineMoney(int money) {
-        machine.setCoins(RandomUtil.moneyToCoins(money));
+    public void setMachineMoney(MoneyRequest request) {
+        machine.setCoins(RandomUtil.moneyToCoins(request.money));
     }
 
     public CoinsResponse getMachineCoins() {
@@ -28,8 +30,8 @@ public class MachineService {
         );
     }
 
-    public void inputMoney(int money) {
-        machine.inputMoney(money);
+    public void inputMoney(MoneyRequest request) {
+        machine.inputMoney(request.money);
     }
 
     public boolean canMoreOrder() {
@@ -40,8 +42,8 @@ public class MachineService {
         return machine.getLeftMoney();
     }
 
-    public void buyStock(String name) {
-        machine.buy(name);
+    public void buyStock(BuyStockRequest request) {
+        machine.buy(request.name);
     }
 
     public CoinsResponse payback() {
