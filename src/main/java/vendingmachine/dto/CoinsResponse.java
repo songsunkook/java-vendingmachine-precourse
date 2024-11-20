@@ -7,7 +7,7 @@ import vendingmachine.domain.Coins;
 
 public class CoinsResponse {
 
-    private Map<Coin, Integer> coins;
+    public Map<Coin, Integer> coins;
 
     private CoinsResponse(Map<Coin, Integer> coins) {
         this.coins = coins;
