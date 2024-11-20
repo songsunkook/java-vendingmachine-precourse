@@ -86,4 +86,18 @@ class MachineTest {
         machine.inputMoney(3000);
         assertThat(machine.canMoreOrder()).isFalse();
     }
+
+    @Test
+    void 잔돈을_모두_반환할_수_없는_경우_가능한_금액만_반환한다() {
+        Machine machine = new Machine();
+        Coins coins = new Coins();
+        coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_100);
+        coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_10);
+        coins.add(Coin.COIN_10);
+        machine.setCoins(coins);
+        machine.inputMoney(180);
+        assertThat(machine.payback().total()).isEqualTo(170);
+    }
 }

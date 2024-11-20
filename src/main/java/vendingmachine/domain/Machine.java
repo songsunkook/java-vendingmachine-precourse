@@ -54,4 +54,8 @@ public class Machine {
             stocks.stream()
                 .anyMatch(stock -> stock.getQuantity() > 0);
     }
+
+    public Coins payback() {
+        return coins.payback(inputtedMoney);
+    }
 }

@@ -13,6 +13,10 @@ public class Coins {
         coins.put(coin, coins.getOrDefault(coin, 0) + 1);
     }
 
+    public void add(Coin coin, int amount) {
+        coins.put(coin, coins.getOrDefault(coin, 0) + amount);
+    }
+
     public int total() {
         return coins.entrySet().stream()
             .mapToInt(set -> set.getKey().getAmount() * set.getValue())
@@ -23,6 +27,7 @@ public class Coins {
         this.coins.putAll(coins.coins);
     }
 
+    // 물품 구매
     public void use(int money) {
         for (int i = 0; i < Coin.values().length; i++) {
             Coin coin = Coin.values()[i];
@@ -43,5 +48,22 @@ public class Coins {
         return coins.entrySet().stream()
             .mapToInt(set -> set.getValue())
             .sum();
+    }
+
+    // 남은 코인 반환
+    public Coins payback(int money) {
+        Coins payback = new Coins();
+        for (int i = 0; i < Coin.values().length; i++) {
+            Coin coin = Coin.values()[i];
+            Integer coinCount = coins.get(coin);
+            if (coinCount == null || money < coin.getAmount()) {
+                continue;
+            }
+            int paybackAmount = Math.min(money / coin.getAmount(), coinCount);
+            money -= coin.getAmount() * paybackAmount;
+            coins.put(coin, coins.get(coin) - paybackAmount);
+            payback.add(coin, paybackAmount);
+        }
+        return payback;
     }
 }
