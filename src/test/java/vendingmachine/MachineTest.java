@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import vendingmachine.domain.Coins;
 import vendingmachine.domain.Machine;
+import vendingmachine.domain.Stock;
 
 class MachineTest {
 
@@ -24,5 +25,11 @@ class MachineTest {
         machine.setCoins(coins);
         machine.buy(1110);
         assertThat(machine.getCoinCount()).isEqualTo(4);
+    }
+
+    @Test
+    void 상품명_가격_수량으로_상품을_추가할_수_있다() {
+        Machine machine = new Machine();
+        machine.addStock(new Stock("사이다", 560, 10));
     }
 }
