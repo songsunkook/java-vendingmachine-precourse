@@ -1,7 +1,8 @@
 package vendingmachine.domain;
 
 import static vendingmachine.constant.ExceptionMessage.COST_MUST_BE_POSITIVE_NUMBER;
-import static vendingmachine.constant.ExceptionMessage.NOT_DIVIDED_COST;
+import static vendingmachine.constant.ExceptionMessage.COST_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT;
+import static vendingmachine.constant.MachineConstant.MINIMUM_COIN_AMOUNT;
 
 public class Stock {
 
@@ -10,8 +11,8 @@ public class Stock {
     private int quantity;
 
     public Stock(String name, int cost, int quantity) {
-        if (cost % 10 != 0) {
-            throw new IllegalArgumentException(NOT_DIVIDED_COST.getMessage(10));
+        if (cost % MINIMUM_COIN_AMOUNT != 0) {
+            throw new IllegalArgumentException(COST_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT.getMessage());
         }
         if (cost < 0) {
             throw new IllegalArgumentException(COST_MUST_BE_POSITIVE_NUMBER.getMessage());
