@@ -1,8 +1,5 @@
 package vendingmachine.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import vendingmachine.Coin;
 import vendingmachine.domain.Coins;

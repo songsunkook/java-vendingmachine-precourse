@@ -66,4 +66,8 @@ public class Coins {
         }
         return payback;
     }
+
+    public Map<Coin, Integer> get() {
+        return coins;
+    }
 }

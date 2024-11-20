@@ -21,6 +21,10 @@ public class Machine {
         coins.use(money);
     }
 
+    public void buy(String name) {
+        buy(name, 1);
+    }
+
     public void buy(String name, int count) {
         Stock target = findStockByName(name);
         if (inputtedMoney < target.getCost() * count) {
@@ -41,6 +45,10 @@ public class Machine {
         stocks.add(stock);
     }
 
+    public void addStocks(List<Stock> stocks) {
+        this.stocks.addAll(stocks);
+    }
+
     private Stock findStockByName(String name) {
         return stocks.stream()
             .filter(stock -> stock.getName() == name)
@@ -57,5 +65,13 @@ public class Machine {
 
     public Coins payback() {
         return coins.payback(inputtedMoney);
+    }
+
+    public Coins getCoins() {
+        return coins;
+    }
+
+    public int getLeftMoney() {
+        return inputtedMoney;
     }
 }

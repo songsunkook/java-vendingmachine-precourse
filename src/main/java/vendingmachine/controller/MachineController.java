@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import vendingmachine.service.MachineService;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
@@ -26,6 +27,6 @@ public class MachineController {
         }
 
         OutputView.leftMoney(machineService.leftMoney());
-        OutputView.smallChange(machineService.smallChange());
+        OutputView.payback(machineService.payback());
     }
 }
