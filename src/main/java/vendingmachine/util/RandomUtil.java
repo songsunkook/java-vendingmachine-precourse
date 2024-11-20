@@ -6,6 +6,9 @@ import vendingmachine.domain.coin.Coins;
 
 public class RandomUtil {
 
+    private RandomUtil() {
+    }
+
     public static Coins generateCoins(int money) {
         Coins coins = new Coins();
         while (finishGenerate(money)) {

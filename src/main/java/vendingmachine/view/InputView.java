@@ -7,6 +7,9 @@ import vendingmachine.dto.StocksRequest;
 
 public class InputView {
 
+    private InputView() {
+    }
+
     public static MoneyRequest machineMoney() {
         return MoneyRequest.from(Console.readLine());
     }
