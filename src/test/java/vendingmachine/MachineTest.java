@@ -100,4 +100,19 @@ class MachineTest {
         machine.inputMoney(180);
         assertThat(machine.payback().total()).isEqualTo(170);
     }
+
+    @Test
+    void 반환되지_않은_금액은_자판기에_남는다() {
+        Machine machine = new Machine();
+        Coins coins = new Coins();
+        coins.add(Coin.COIN_500);
+        coins.add(Coin.COIN_100);
+        coins.add(Coin.COIN_50);
+        coins.add(Coin.COIN_10);
+        coins.add(Coin.COIN_10);
+        machine.setCoins(coins);
+        machine.inputMoney(180);
+        machine.payback();
+        assertThat(machine.getCoinCount()).isEqualTo(1);
+    }
 }
