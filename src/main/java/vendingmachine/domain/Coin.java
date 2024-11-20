@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.constant.ExceptionMessage.INVALID_COIN_TYPE_REQUEST;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +28,7 @@ public enum Coin {
         return Arrays.stream(values())
             .filter(coin -> coin.amount == amount)
             .findAny()
-            .orElseThrow(() -> new IllegalStateException("[ERROR] 잘못된 동전 종류에 대한 요청"));
+            .orElseThrow(() -> new IllegalStateException(INVALID_COIN_TYPE_REQUEST.getMessage()));
     }
 
     public int getAmount() {

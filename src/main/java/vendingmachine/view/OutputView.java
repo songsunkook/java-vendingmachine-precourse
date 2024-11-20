@@ -41,7 +41,9 @@ public class OutputView {
     }
 
     public void exception(Exception e) {
-        printWithoutBuffer(e.getMessage());
+        print(e.getMessage());
+        print(NEW_LINE.getMessage());
+        flush();
     }
 
     private void print(String content) {

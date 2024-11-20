@@ -56,7 +56,8 @@ class MachineTest {
         machine.setCoins(coins);
         machine.addStock(new Stock("사이다", 560, 10));
         machine.inputMoney(3000);
-        machine.buy("사이다", 2);
+        machine.buy("사이다");
+        machine.buy("사이다");
     }
 
     @Test

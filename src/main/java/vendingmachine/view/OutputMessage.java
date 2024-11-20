@@ -9,6 +9,7 @@ public enum OutputMessage {
     LEFT_MONEY("%n투입 금액: %d원%n"),
     INPUT_BUY_STOCK("구매할 상품명을 입력해 주세요.%n"),
     PAYBACK("잔돈%n"),
+    NEW_LINE("%n"),
     ;
 
     private final String message;

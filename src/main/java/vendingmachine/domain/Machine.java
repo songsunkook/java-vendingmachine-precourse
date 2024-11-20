@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.constant.ExceptionMessage.NOT_FOUND_STOCK_NAME;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,19 +21,9 @@ public class Machine {
     }
 
     public void buy(String name) {
-        buy(name, 1);
-    }
-
-    public void buy(String name, int count) {
         Stock target = findStockByName(name);
-        if (inputtedMoney < target.getCost() * count) {
-            throw new IllegalArgumentException("[ERROR] 넣은 금액보다 비싼 요청");
-        }
-        if (target.getQuantity() < count) {
-            throw new IllegalArgumentException("[ERROR] 재고보다 많은 개수 요청");
-        }
-        target.useQuantity(count);
-        inputtedMoney -= target.getCost() * count;
+        target.useQuantity(1);
+        inputtedMoney -= target.getCost();
     }
 
     public int getCoinCount() {
@@ -50,7 +42,7 @@ public class Machine {
         return stocks.stream()
             .filter(stock -> Objects.equals(stock.getName(), name))
             .findAny()
-            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 상품"));
+            .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_STOCK_NAME.getMessage()));
     }
 
     public boolean canMoreOrder() {

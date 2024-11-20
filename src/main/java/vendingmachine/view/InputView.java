@@ -1,5 +1,7 @@
 package vendingmachine.view;
 
+import static vendingmachine.constant.ExceptionMessage.MONEY_MUST_BE_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import vendingmachine.dto.StocksRequest;
 
@@ -9,7 +11,7 @@ public class InputView {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 입력");
+            throw new IllegalArgumentException(MONEY_MUST_BE_NUMBER.getMessage());
         }
     }
 
