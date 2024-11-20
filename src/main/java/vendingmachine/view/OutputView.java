@@ -6,41 +6,55 @@ import vendingmachine.dto.CoinsResponse;
 
 public class OutputView {
 
-    public static void inputMachineMoney() {
-        print(INPUT_MACHINE_MONEY.getMessage());
+    private StringBuilder buffer = new StringBuilder();
+
+    public void inputMachineMoney() {
+        printWithoutBuffer(INPUT_MACHINE_MONEY.getMessage());
     }
 
-    public static void machineCoins(CoinsResponse response) {
+    public void machineCoins(CoinsResponse response) {
         print(MACHINE_COINS.getMessage());
         response.getCoinsWithZero().forEach((key, value) -> print(COIN_FORMAT.getMessage(key.getAmount(), value)));
+        flush();
     }
 
-    public static void inputStocks() {
-        print(INPUT_STOCKS.getMessage());
+    public void inputStocks() {
+        printWithoutBuffer(INPUT_STOCKS.getMessage());
     }
 
-    public static void inputMoney() {
-        print(INPUT_MONEY.getMessage());
+    public void inputMoney() {
+        printWithoutBuffer(INPUT_MONEY.getMessage());
     }
 
-    public static void leftMoney(int money) {
-        print(LEFT_MONEY.getMessage(money));
+    public void leftMoney(int money) {
+        printWithoutBuffer(LEFT_MONEY.getMessage(money));
     }
 
-    public static void inputBuyStock() {
-        print(INPUT_BUY_STOCK.getMessage());
+    public void inputBuyStock() {
+        printWithoutBuffer(INPUT_BUY_STOCK.getMessage());
     }
 
-    public static void payback(CoinsResponse response) {
+    public void payback(CoinsResponse response) {
         print(PAYBACK.getMessage());
         response.getCoinsWithoutZero().forEach((key, value) -> print(COIN_FORMAT.getMessage(key.getAmount(), value)));
+        flush();
     }
 
-    public static void exception(Exception e) {
-        print(e.getMessage());
+    public void exception(Exception e) {
+        printWithoutBuffer(e.getMessage());
     }
 
-    private static void print(String content) {
-        System.out.print(content);
+    private void print(String content) {
+        buffer.append(content);
+    }
+
+    private void printWithoutBuffer(String content) {
+        buffer.append(content);
+        flush();
+    }
+
+    private void flush() {
+        System.out.print(buffer);
+        buffer = new StringBuilder();
     }
 }

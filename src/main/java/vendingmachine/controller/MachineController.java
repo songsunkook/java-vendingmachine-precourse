@@ -6,6 +6,7 @@ import vendingmachine.view.OutputView;
 
 public class MachineController {
 
+    private final OutputView outputView = new OutputView();
     private final MachineService machineService = new MachineService();
 
     public void run() {
@@ -17,18 +18,18 @@ public class MachineController {
     }
 
     private void setupMachineMoney() {
-        OutputView.inputMachineMoney();
+        outputView.inputMachineMoney();
         machineService.setMachineMoney(InputView.machineMoney());
-        OutputView.machineCoins(machineService.getMachineCoins());
+        outputView.machineCoins(machineService.getMachineCoins());
     }
 
     private void setupMachineStocks() {
-        OutputView.inputStocks();
+        outputView.inputStocks();
         machineService.setMachineStocks(InputView.stocks());
     }
 
     private void inputMoney() {
-        OutputView.inputMoney();
+        outputView.inputMoney();
         machineService.inputMoney(InputView.money());
     }
 
@@ -39,21 +40,21 @@ public class MachineController {
     }
 
     private void buyStock() {
-        OutputView.leftMoney(machineService.leftMoney());
-        OutputView.inputBuyStock();
+        outputView.leftMoney(machineService.leftMoney());
+        outputView.inputBuyStock();
         machineService.buyStock(InputView.buyStock());
     }
 
     private void result() {
-        OutputView.leftMoney(machineService.leftMoney());
-        OutputView.payback(machineService.payback());
+        outputView.leftMoney(machineService.leftMoney());
+        outputView.payback(machineService.payback());
     }
 
     public void process(Runnable action) {
         try {
             action.run();
         } catch (IllegalArgumentException e) {
-            OutputView.exception(e);
+            outputView.exception(e);
             process(action);
         }
     }
