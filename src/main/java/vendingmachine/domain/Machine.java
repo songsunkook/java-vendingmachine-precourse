@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class Machine {
 
+    private static final int BUY_QUANTITY_UNIT = 1;
+
     private final Coins coins = new Coins();
     private final List<Stock> stocks = new ArrayList<>();
     private int inputtedMoney = 0;
@@ -22,7 +24,7 @@ public class Machine {
 
     public void buy(String name) {
         Stock target = findStockByName(name);
-        target.useQuantity(1);
+        target.useQuantity(BUY_QUANTITY_UNIT);
         inputtedMoney -= target.getCost();
     }
 
@@ -46,10 +48,17 @@ public class Machine {
     }
 
     public boolean canMoreOrder() {
+        return enoughMoney() && hasMoreStock();
+    }
+
+    private boolean enoughMoney() {
         return stocks.stream()
-            .anyMatch(stock -> stock.getCost() <= inputtedMoney) &&
-            stocks.stream()
-                .anyMatch(stock -> stock.getQuantity() > 0);
+            .anyMatch(stock -> stock.getCost() <= inputtedMoney);
+    }
+
+    private boolean hasMoreStock() {
+        return stocks.stream()
+            .anyMatch(Stock::hasMore);
     }
 
     public Coins payback() {

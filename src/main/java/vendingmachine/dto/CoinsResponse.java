@@ -9,7 +9,7 @@ import vendingmachine.domain.Coins;
 
 public class CoinsResponse {
 
-    private Map<Coin, Integer> coins;
+    public final Map<Coin, Integer> coins;
 
     private CoinsResponse(Map<Coin, Integer> coins) {
         this.coins = new EnumMap<>(coins);

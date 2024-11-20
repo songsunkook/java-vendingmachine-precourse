@@ -4,21 +4,28 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class Coins {
+    
+    private static final int DEFAULT_COIN_COUNT = 0;
+    private static final int ADD_COIN_UNIT = 1;
 
     private final Map<Coin, Integer> coins = new EnumMap<>(Coin.class);
 
     public void add(Coin coin) {
-        coins.put(coin, coins.getOrDefault(coin, 0) + 1);
+        coins.put(coin, coins.getOrDefault(coin, DEFAULT_COIN_COUNT) + ADD_COIN_UNIT);
     }
 
     public void add(Coin coin, int amount) {
-        coins.put(coin, coins.getOrDefault(coin, 0) + amount);
+        coins.put(coin, coins.getOrDefault(coin, DEFAULT_COIN_COUNT) + amount);
     }
 
     public int total() {
         return coins.entrySet().stream()
-            .mapToInt(set -> set.getKey().getAmount() * set.getValue())
+            .mapToInt(this::getCoinTotalAmount)
             .sum();
+    }
+
+    private int getCoinTotalAmount(Map.Entry<Coin, Integer> coin) {
+        return coin.getKey().getAmount() * coin.getValue();
     }
 
     public void addAll(Coins coins) {
@@ -26,8 +33,8 @@ public class Coins {
     }
 
     public int getCount() {
-        return coins.entrySet().stream()
-            .mapToInt(set -> set.getValue())
+        return coins.values().stream()
+            .mapToInt(i -> i)
             .sum();
     }
 

@@ -15,7 +15,7 @@ public class MachineService {
     private final Machine machine = new Machine();
 
     public void setMachineMoney(MoneyRequest request) {
-        machine.setCoins(RandomUtil.moneyToCoins(request.money));
+        machine.setCoins(RandomUtil.generateCoins(request.money));
     }
 
     public CoinsResponse getMachineCoins() {

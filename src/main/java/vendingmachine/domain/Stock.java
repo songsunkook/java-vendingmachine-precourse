@@ -11,15 +11,27 @@ public class Stock {
     private int quantity;
 
     public Stock(String name, int cost, int quantity) {
-        if (cost % MINIMUM_COIN_AMOUNT != 0) {
-            throw new IllegalArgumentException(COST_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT.getMessage());
-        }
-        if (cost < 0) {
-            throw new IllegalArgumentException(COST_MUST_BE_POSITIVE_NUMBER.getMessage());
-        }
+        validateCost(cost);
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;
+    }
+
+    private static void validateCost(int cost) {
+        validatePositiveNumber(cost);
+        validateCanDivide(cost);
+    }
+
+    private static void validatePositiveNumber(int cost) {
+        if (cost < 0) {
+            throw new IllegalArgumentException(COST_MUST_BE_POSITIVE_NUMBER.getMessage());
+        }
+    }
+
+    private static void validateCanDivide(int cost) {
+        if (cost % MINIMUM_COIN_AMOUNT != 0) {
+            throw new IllegalArgumentException(COST_NOT_DIVIDED_IN_MINIMUM_COIN_AMOUNT.getMessage());
+        }
     }
 
     public String getName() {
@@ -30,11 +42,11 @@ public class Stock {
         return cost;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void useQuantity(int count) {
         quantity -= count;
+    }
+
+    public boolean hasMore() {
+        return quantity > 0;
     }
 }

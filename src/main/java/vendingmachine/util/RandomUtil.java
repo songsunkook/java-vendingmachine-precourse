@@ -6,16 +6,19 @@ import vendingmachine.domain.Coins;
 
 public class RandomUtil {
 
-    public static Coins moneyToCoins(int money) {
+    public static Coins generateCoins(int money) {
         Coins coins = new Coins();
-        while (money > 0) {
-            int random = Randoms.pickNumberInList(Coin.getAmounts());
-            if (random > money) {
-                continue;
+        while (finishGenerate(money)) {
+            int randomCoinAmount = Randoms.pickNumberInList(Coin.getAmounts());
+            if (randomCoinAmount <= money) {
+                money -= randomCoinAmount;
+                coins.add(Coin.from(randomCoinAmount));
             }
-            money -= random;
-            coins.add(Coin.from(random));
         }
         return coins;
+    }
+
+    private static boolean finishGenerate(int money) {
+        return money > 0;
     }
 }
