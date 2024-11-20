@@ -1,12 +1,8 @@
-package vendingmachine;
+package vendingmachine.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
-
-import vendingmachine.domain.Coins;
-import vendingmachine.domain.Machine;
-import vendingmachine.domain.Stock;
 
 class MachineTest {
 

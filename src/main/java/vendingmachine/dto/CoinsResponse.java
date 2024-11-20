@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
 
-import vendingmachine.Coin;
+import vendingmachine.domain.Coin;
 import vendingmachine.domain.Coins;
 
 public class CoinsResponse {

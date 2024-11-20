@@ -1,10 +1,8 @@
-package vendingmachine;
+package vendingmachine.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-
-import vendingmachine.domain.Stock;
 
 class StockTest {
 

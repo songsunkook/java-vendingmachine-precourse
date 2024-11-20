@@ -1,10 +1,8 @@
-package vendingmachine;
+package vendingmachine.dto;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-
-import vendingmachine.dto.StocksRequest;
 
 class StocksRequestTest {
 

@@ -3,8 +3,6 @@ package vendingmachine.domain;
 import java.util.EnumMap;
 import java.util.Map;
 
-import vendingmachine.Coin;
-
 public class Coins {
 
     private final Map<Coin, Integer> coins = new EnumMap<>(Coin.class);

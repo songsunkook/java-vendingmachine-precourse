@@ -1,11 +1,10 @@
-package vendingmachine;
+package vendingmachine.util;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.domain.Coins;
-import vendingmachine.util.RandomUtil;
 
 class RandomUtilTest {
 
